@@ -1,7 +1,8 @@
 FROM ghcr.io/parkervcp/games:source
 
-# Обновляем список пакетов и устанавливаем libgdiplus
+# Обновляем и ставим зависимости
 RUN apt update && \
     apt install -y libgdiplus && \
     ldconfig && \
+    rm -f /usr/lib/libgdiplus.so.0 && \
     ln -s /usr/lib/libgdiplus.so /usr/lib/libgdiplus.so.0
